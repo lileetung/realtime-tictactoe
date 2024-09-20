@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  websocket:
+    build:
+      context: .
+      dockerfile: Dockerfile.websocket
+    ports:
+      - "8765:8765"
+
+  http:
+    build:
+      context: .
+      dockerfile: Dockerfile.http
+    ports:
+      - "8000:8000"
+    depends_on:
+      - websocket
